@@ -1,66 +1,110 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Songjie Shi | Homepage</title>
+  <meta name="description" content="Songjie Shi 的个人主页。南京大学智能科学与技术学院本科在读，记录学习、思考与探索。">
+  <meta name="theme-color" content="#f7f6f2">
+  <title>Songjie Shi · 学习与思考</title>
   <style>
-    body {
-      max-width: 850px;
-      margin: 60px auto;
-      padding: 0 25px;
-      font-family: Arial, sans-serif;
-      color: #333;
-      line-height: 1.8;
+    :root { color-scheme: light; --paper:#f7f6f2; --ink:#292e2a; --muted:#70756e; --line:#dcded5; --accent:#4d6653; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:32px; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; font-size:15px; line-height:1.9; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:var(--accent); }
+    a:focus-visible { outline:2px solid var(--accent); outline-offset:6px; border-radius:2px; }
+    ::selection { background:#dce4d6; }
+    .page { max-width:1080px; padding:0 48px; margin:auto; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:29px 0; border-bottom:1px solid var(--line); }
+    .wordmark { font-family:Georgia,"Songti SC",serif; font-size:19px; letter-spacing:-.4px; }
+    .topnote,.eyebrow,.section-en,.footer-note { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+    .layout { display:grid; grid-template-columns:190px minmax(0,1fr); gap:76px; padding-top:76px; }
+    aside { align-self:start; position:sticky; top:40px; }
+    .nav-label { margin:0 0 24px; font-size:11px; color:var(--muted); letter-spacing:2px; }
+    nav { display:flex; flex-direction:column; gap:16px; }
+    nav a { display:flex; align-items:baseline; gap:15px; font-size:13px; color:var(--muted); transition:color .2s; }
+    nav a:hover { color:var(--ink); }
+    nav span { font-family:Georgia,serif; font-size:11px; color:#92998d; }
+    .aside-note { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); font-family:Georgia,"Songti SC",serif; font-size:12px; line-height:2; color:var(--muted); }
+    .hero { padding-bottom:64px; }
+    .eyebrow { display:flex; align-items:center; gap:9px; margin:0 0 23px; }
+    .eyebrow::before { content:""; width:5px; height:5px; background:var(--accent); border-radius:50%; }
+    h1,h2,.thought { font-family:Georgia,"Noto Serif SC","Songti SC",SimSun,serif; font-weight:400; }
+    h1 { margin:0 0 18px; font-size:clamp(42px,5.8vw,64px); line-height:1.15; letter-spacing:-2px; }
+    .intro { color:var(--muted); margin:0; font-size:14px; }
+    .thought { font-size:23px; line-height:1.85; margin:38px 0 26px; letter-spacing:2px; }
+    .contact { margin-top:24px; display:inline-flex; align-items:center; gap:14px; font-size:12px; color:var(--accent); border-bottom:1px solid #b8c2b4; padding-bottom:3px; overflow-wrap:anywhere; }
+    .contact span { font-size:15px; }
+    section { padding:31px 0 37px; border-top:1px solid var(--line); }
+    .section-head { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:23px; }
+    h2 { font-size:23px; margin:0; letter-spacing:1px; }
+    .section-en { font-size:9px; letter-spacing:1.5px; }
+    .education { display:flex; justify-content:space-between; align-items:baseline; gap:20px; }
+    h3 { font-size:15px; font-weight:500; margin:0 0 5px; }
+    .detail { font-size:13px; color:var(--muted); margin:0; }
+    .date { font-family:Georgia,serif; font-size:13px; white-space:nowrap; color:var(--muted); }
+    .empty { padding:2px 0 0; }
+    .empty p { font-size:13px; color:var(--muted); margin:0; }
+    .empty .quiet { font-family:Georgia,"Songti SC",serif; color:#8a8e85; font-size:12px; margin-top:7px; }
+    footer { display:flex; justify-content:space-between; gap:20px; padding:28px 0 32px; margin-top:40px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
+    .back-top { font-size:11px; }
+    @media (max-width:760px) {
+      .page { padding:0 24px; } .topbar { padding:22px 0; } .topnote { font-size:9px; letter-spacing:1px; }
+      .layout { display:block; padding-top:24px; } aside { position:static; margin-bottom:49px; }
+      .nav-label,.aside-note { display:none; } nav { flex-direction:row; flex-wrap:wrap; gap:10px 20px; } nav a { font-size:12px; gap:6px; } nav span { font-size:9px; }
+      .hero { padding-bottom:46px; } h1 { letter-spacing:-1.5px; } .thought { font-size:20px; margin-top:28px; }
+      section { padding:27px 0 31px; } h2 { font-size:21px; } .section-head { gap:10px; } .section-en { font-size:8px; letter-spacing:1px; }
+      .education { flex-wrap:wrap; gap:8px; } footer { margin-top:20px; } .footer-note { letter-spacing:1px; font-size:9px; }
     }
-    h1 { color: #234567; }
-    h2 {
-      color: #234567;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-      margin-top: 35px;
-    }
-    a { color: #2878b5; }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
 </head>
-<body>
-
-  <h1>Songjie Shi</h1>
-
-  <p>
-    Undergraduate Student<br>
-    Nanjing University
-  </p>
-
-  <p>
-    Welcome to my personal homepage!
-  </p>
-
-  <h2>About Me</h2>
-  <p>
-    I am an undergraduate student at Nanjing University.
-  </p>
-
-  <h2>Research Interests</h2>
-  <p>
-    Coming soon.
-  </p>
-
-  <h2>Publications</h2>
-  <p>
-    Coming soon.
-  </p>
-
-  <h2>Projects</h2>
-  <p>
-    Coming soon.
-  </p>
-
-  <h2>Contact</h2>
-  <p>
-    Email: Your email address
-  </p>
-
+<body id="top">
+  <div class="page">
+    <header class="topbar">
+      <a class="wordmark" href="#top" aria-label="Songjie Shi 首页">Songjie Shi<span style="color:var(--accent)">.</span></a>
+    </header>
+    <div class="layout">
+      <aside aria-label="页面目录">
+        <p class="nav-label">目 录 / INDEX</p>
+        <nav aria-label="主导航">
+          <a href="#education"><span>01</span>教育经历</a>
+          <a href="#thoughts"><span>02</span>兴趣与思考</a>
+          <a href="#projects"><span>03</span>Projects</a>
+          <a href="#publications"><span>04</span>Publications</a>
+          <a href="#resources"><span>05</span>学习资源</a>
+        </nav>
+      </aside>
+      <main>
+        <div class="hero">
+          <h1>Songjie Shi</h1>
+          <p class="intro">南京大学 · 智能科学与技术学院 · 本科在读</p>
+          <a class="contact" href="mailto:241880233@smail.nju.edu.cn">241880233@smail.nju.edu.cn <span aria-hidden="true">↗</span></a>
+        </div>
+        <section id="education" aria-labelledby="education-title">
+          <div class="section-head"><h2 id="education-title">教育经历</h2><span class="section-en">01 / Education</span></div>
+          <div class="education"><div><h3>南京大学</h3><p class="detail">智能科学与技术学院 · 本科在读</p></div><span class="date">2024 — 至今</span></div>
+        </section>
+        <section id="thoughts" aria-labelledby="thoughts-title">
+          <div class="section-head"><h2 id="thoughts-title">兴趣与思考</h2><span class="section-en">02 / Thoughts</span></div>
+          <div class="empty"><p>待更新。</p></div>
+        </section>
+        <section id="projects" aria-labelledby="projects-title">
+          <div class="section-head"><h2 id="projects-title">Projects</h2><span class="section-en">03 / Practice</span></div>
+          <div class="empty"><p>待更新。</p></div>
+        </section>
+        <section id="publications" aria-labelledby="publications-title">
+          <div class="section-head"><h2 id="publications-title">Publications</h2><span class="section-en">04 / Research</span></div>
+          <div class="empty"><p>待更新。</p></div>
+        </section>
+        <section id="resources" aria-labelledby="resources-title">
+          <div class="section-head"><h2 id="resources-title">我认为有价值的学习资源</h2><span class="section-en">05 / Resources</span></div>
+          <div class="empty"><p>待更新。</p></div>
+        </section>
+      </main>
+    </div>
+    <footer><span>© Songjie Shi</span><a class="back-top" href="#top">回到顶部 ↑</a></footer>
+  </div>
 </body>
 </html>
